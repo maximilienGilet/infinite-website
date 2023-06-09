@@ -20,10 +20,10 @@ export default function Home() {
         <br />
         <p>Explore any link and discover anything. This website is endless.</p>
       </div>
-      <div>
+      <div className="w-screen sm:w-96">
         <form
           onSubmit={handleForm}
-          className="border-4 border-black w-96 flex transition-all focus-within:-translate-x-1 focus-within:-translate-y-1 focus-within:shadow-[5px_5px_black]"
+          className="border-4 border-black mx-4 flex transition-all focus-within:-translate-x-1 focus-within:-translate-y-1 focus-within:shadow-[5px_5px_black]"
         >
           <p className="py-4 pl-4 pr-2">/</p>
           <input
