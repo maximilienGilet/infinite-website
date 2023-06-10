@@ -1,27 +1,17 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Router } from "next/router";
 import React from "react";
+import { init } from "@socialgouv/matomo-next";
+
+const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
+const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
-    const start = () => {
-      console.log("start");
-      setLoading(true);
-    };
-    const end = () => {
-      console.log("findished");
-      setLoading(false);
-    };
-    Router.events.on("routeChangeStart", start);
-    Router.events.on("routeChangeComplete", end);
-    Router.events.on("routeChangeError", end);
-    return () => {
-      Router.events.off("routeChangeStart", start);
-      Router.events.off("routeChangeComplete", end);
-      Router.events.off("routeChangeError", end);
-    };
+    if (MATOMO_SITE_ID && MATOMO_URL) {
+      init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
+    }
   }, []);
   return <>{loading ? <h1>Loading...</h1> : <Component {...pageProps} />}</>;
 }
