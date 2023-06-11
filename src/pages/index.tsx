@@ -41,6 +41,10 @@ export default function Home() {
             placeholder="show-me-anything"
             autoFocus={true}
             pattern={`[a-z][^\\\\\:\|\<\>\"\*\?]*$`}
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck="false"
+            required
           />
           <button
             type="submit"
