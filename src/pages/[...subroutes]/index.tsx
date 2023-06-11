@@ -30,7 +30,7 @@ export default function Page({
       setContent("Error loading page");
       setLoading(false);
     }
-  });
+  }, []);
 
   if (loading) {
     return (
